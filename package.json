@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "wordpress": "^1.4.2"
+  }
+}
