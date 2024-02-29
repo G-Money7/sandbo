@@ -1,0 +1,15 @@
+{
+  "apiVersion": 2,
+  "name": "create-block/student-portfolio",
+  "version": "1.0.0",
+  "title": "Student portfolio block",
+  "category": "widgets",
+  "icon": "smiley",
+  "description": "student portfolio block.",
+  "supports": {
+    "html": false
+  },
+  "editorScript": "file:./build/index.js",
+  "editorStyle": "file:./build/index.css",
+  "style": "file:./build/style-index.css"
+}
