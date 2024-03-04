@@ -8,3 +8,5 @@
  * https://developer.wordpress.org/themes/features/block-patterns/#registering-block-patterns
  */
 ?>
+
+<!-- wp:block {"ref":40} /-->
