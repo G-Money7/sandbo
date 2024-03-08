@@ -1,48 +1,31 @@
-# Wordpress - ignore core, configuration, examples, uploads and logs.
-# https://github.com/github/gitignore/blob/main/WordPress.gitignore
+/db/data
+.env
+.idea
 
-# Core
-#
-# Note: if you want to stage/commit WP core files
-# you can delete this whole section/until Configuration.
-/wp-admin/
-/wp-content/index.php
-/wp-content/languages
-/wp-content/plugins/index.php
-/wp-content/themes/index.php
-/wp-includes/
-/index.php
-/license.txt
-/readme.html
-/wp-*.php
-/xmlrpc.php
+# Exclude everything in WP root…
+/wordpress/*
 
-# Configuration
-wp-config.php
+# … except wp-content.
+!/wordpress/wp-content
 
-# Example themes
-/wp-content/themes/twenty*/
+# Now exclude everything in wp-content …
+/wordpress/wp-content/*
 
-# Example plugin
-/wp-content/plugins/hello.php
+# … except plugins, themes, and uploads …
+!/wordpress/wp-content/plugins
+!/wordpress/wp-content/themes
+!/wordpress/wp-content/uploads
 
-# Uploads
-/wp-content/uploads/
+# Now exclude everything in plugins and themes …
+/wordpress/wp-content/plugins/*
+/wordpress/wp-content/themes/*
 
-# Log files
-*.log
-
-# htaccess
-/.htaccess
-
-# All plugins
-#
-# Note: If you wish to whitelist plugins,
-# uncomment the next line
-#/wp-content/plugins
-
-# All themes
-#
-# Note: If you wish to whitelist themes,
-# uncomment the next line
-#/wp-content/themes
+# … except our stuff.
+!/wordpress/wp-content/plugins/mailhog.php
+!/wordpress/wp-content/plugins/no-pulp-table
+!/wordpress/wp-content/plugins/final-books
+!/wordpress/wp-content/plugins/query-monitor
+!/wordpress/wp-content/plugins/blockart-blocks
+!/wordpress/wp-content/plugins/loco-translate
+!/wordpress/wp-content/themes/zakra
+!/wordpress/wp-content/plugins/high-pulp-blocks
