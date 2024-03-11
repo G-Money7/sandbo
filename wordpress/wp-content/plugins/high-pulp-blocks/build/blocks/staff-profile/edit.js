@@ -1,47 +1,77 @@
-/**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
- */
-import { __ } from '@wordpress/i18n';
-import { useBlockProps, MediaUpload, MediaUploadCheck, RichText } from '@wordpress/block-editor';
-import { Button } from '@wordpress/components';
+import { InspectorControls, MediaUpload, MediaUploadCheck, RichText, useBlockProps, PanelBody, RangeControl, ColorPalette } from '@wordpress/block-editor';
+import { Panel, Button } from '@wordpress/components';
+import { useState } from '@wordpress/element';
 
 function Edit({ attributes, setAttributes }) {
-	const blockProps = useBlockProps();
-	const { profilePicture, name, jobTitle } = attributes;
+	const { backgroundColor, textSize, imageSize, profilePicture, name, jobTitle } = attributes;
 
-	const onSelectImage = (media) => {
+	// Handlers for attribute changes
+	const onImageSelect = (media) => {
 		setAttributes({ profilePicture: media.url });
 	};
 
+	// Use useState for local state
+	const [tempImageUrl, setTempImageUrl] = useState(profilePicture);
+
 	return (
-		<div {...blockProps}>
-			<MediaUploadCheck>
-				<MediaUpload
-					onSelect={onSelectImage}
-					allowedTypes={['image']}
-					value={profilePicture}
-					render={({ open }) => (
-						<Button onClick={open} isDefault>
-							{profilePicture ? <img src={profilePicture} alt="Profile" /> : 'Choose an image'}
-						</Button>
-					)}
+		<>
+			<InspectorControls>
+				<Panel>
+					<PanelBody title="Background Color">
+						<ColorPalette
+							value={backgroundColor}
+							onChange={(color) => setAttributes({ backgroundColor: color })}
+						/>
+					</PanelBody>
+					<PanelBody title="Text Size">
+						<RangeControl
+							value={textSize}
+							onChange={(size) => setAttributes({ textSize: size })}
+							min={12}
+							max={100}
+						/>
+					</PanelBody>
+					<PanelBody title="Image Size">
+						<RangeControl
+							value={imageSize}
+							onChange={(size) => setAttributes({ imageSize: size })}
+							min={10}
+							max={100}
+						/>
+					</PanelBody>
+				</Panel>
+			</InspectorControls>
+			<div {...useBlockProps()} style={{ backgroundColor, fontSize: textSize }}>
+				<MediaUploadCheck>
+					<MediaUpload
+						onSelect={(media) => {
+							onImageSelect(media);
+							setTempImageUrl(media.url);
+						}}
+						allowedTypes={['image']}
+						render={({ open }) => (
+							<Button className={'button button-large'} onClick={open}>
+								{!tempImageUrl ? 'Select Image' : <img src={tempImageUrl} alt="Profile" style={{ width: imageSize + '%' }} />}
+							</Button>
+						)}
+					/>
+				</MediaUploadCheck>
+				<RichText
+					tagName="h4"
+					placeholder="Name"
+					value={name}
+					onChange={(value) => setAttributes({ name: value })}
+					style={{ fontSize: textSize }}
 				/>
-			</MediaUploadCheck>
-			<RichText
-				tagName="h3" // The tag here could be "div" or another tag for the name.
-				value={name}
-				onChange={(value) => setAttributes({ name: value })}
-				placeholder="Enter name..."
-			/>
-			<RichText
-				tagName="p" // The tag here could be "div" or another tag for the job title.
-				value={jobTitle}
-				onChange={(value) => setAttributes({ jobTitle: value })}
-				placeholder="Enter job title..."
-			/>
-		</div>
+				<RichText
+					tagName="p"
+					placeholder="Job Title"
+					value={jobTitle}
+					onChange={(value) => setAttributes({ jobTitle: value })}
+					style={{ fontSize: textSize }}
+				/>
+			</div>
+		</>
 	);
 }
 

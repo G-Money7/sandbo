@@ -11,6 +11,33 @@
 	"supports": {
 		"html": false
 	},
+  "attributes": {
+
+	"backgroundColor": {
+	  "type": "string",
+	  "default": ""
+	},
+	"textSize": {
+	  "type": "number",
+	  "default": 16
+	},
+	"imageSize": {
+	  "type": "number",
+	  "default": 100
+	},
+	"profilePicture": {
+	  "type": "string",
+	  "default": ""
+	},
+	"name": {
+	  "type": "string",
+	  "default": ""
+	},
+	"jobTitle": {
+	  "type": "string",
+	  "default": ""
+	}
+  },
 	"textdomain": "staff-profile",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
