@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "gs/portfolio-piece",
+	"version": "0.1.0",
+	"title": "Portfolio Piece",
+	"category": "widgets",
+	"icon": "id",
+	"description": "Dynamic block for assignment that lets me upload stuff for my portfolio piece",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+  "attributes": {
+	"portfolioItemId": {
+	  "type": "number",
+	  "default": 0
+	}
+  },
+
+  "textdomain": "portfolio-piece",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScript": "file:./view.js"
+}
