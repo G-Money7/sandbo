@@ -13,4 +13,19 @@
   padding: 2px;
 }
 
+.wp-block-gs-staff-profile {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.wp-block-gs-staff-profile h3, .wp-block-gs-staff-profile p {
+  margin: 10px 0;
+}
+.wp-block-gs-staff-profile img {
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 20px;
+}
+
 /*# sourceMappingURL=style-index.css.map*/

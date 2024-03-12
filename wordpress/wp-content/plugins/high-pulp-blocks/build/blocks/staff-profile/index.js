@@ -10,7 +10,7 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ Edit)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -18,8 +18,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
@@ -29,95 +29,82 @@ function Edit({
   setAttributes
 }) {
   const {
-    backgroundColor,
-    textSize,
-    imageSize,
-    profilePicture,
     name,
-    jobTitle
+    jobTitle,
+    imageUrl,
+    textColor,
+    backgroundColor,
+    imageSize
   } = attributes;
-
-  // Handlers for attribute changes
-  const onImageSelect = media => {
-    setAttributes({
-      profilePicture: media.url
-    });
-  };
-
-  // Use useState for local state
-  const [tempImageUrl, setTempImageUrl] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)(profilePicture);
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Panel, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
-    title: "Background Color"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.ColorPalette, {
-    value: backgroundColor,
-    onChange: color => setAttributes({
-      backgroundColor: color
-    })
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
-    title: "Text Size"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
-    value: textSize,
-    onChange: size => setAttributes({
-      textSize: size
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Settings', 'my-staff-profile-block'),
+    initialOpen: true
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Text Color', 'my-staff-profile-block')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPicker, {
+    color: textColor,
+    onChangeComplete: value => setAttributes({
+      textColor: value.hex
     }),
-    min: 12,
-    max: 100
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
-    title: "Image Size"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+    disableAlpha: true
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Background Color', 'my-staff-profile-block')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPicker, {
+    color: backgroundColor,
+    onChangeComplete: value => setAttributes({
+      backgroundColor: value.hex
+    }),
+    disableAlpha: true
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Image Size', 'my-staff-profile-block'),
     value: imageSize,
-    onChange: size => setAttributes({
-      imageSize: size
+    onChange: value => setAttributes({
+      imageSize: value
     }),
-    min: 10,
-    max: 100
-  })))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    min: 100,
+    max: 300
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
     style: {
-      backgroundColor,
-      fontSize: textSize
+      color: textColor,
+      backgroundColor: backgroundColor
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
-    onSelect: media => {
-      onImageSelect(media);
-      setTempImageUrl(media.url);
-    },
+    onSelect: media => setAttributes({
+      imageUrl: media.url
+    }),
     allowedTypes: ['image'],
+    value: imageUrl,
     render: ({
       open
     }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
-      className: 'button button-large',
       onClick: open
-    }, !tempImageUrl ? 'Select Image' : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-      src: tempImageUrl,
-      alt: "Profile",
-      style: {
-        width: imageSize + '%'
-      }
-    }))
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
-    tagName: "h4",
-    placeholder: "Name",
+    }, imageUrl ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Change Profile Picture', 'my-staff-profile-block') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Upload Profile Picture', 'my-staff-profile-block'))
+  })), imageUrl && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: imageUrl,
+    alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Profile Picture', 'my-staff-profile-block'),
+    style: {
+      width: imageSize,
+      height: 'auto'
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+    tagName: "h3",
     value: name,
-    onChange: value => setAttributes({
-      name: value
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Name', 'my-staff-profile-block'),
+    onChange: newName => setAttributes({
+      name: newName
     }),
     style: {
-      fontSize: textSize
+      color: textColor
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     tagName: "p",
-    placeholder: "Job Title",
     value: jobTitle,
-    onChange: value => setAttributes({
-      jobTitle: value
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Job Title', 'my-staff-profile-block'),
+    onChange: newJobTitle => setAttributes({
+      jobTitle: newJobTitle
     }),
     style: {
-      fontSize: textSize
+      color: textColor
     }
   })));
 }
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Edit);
 
 /***/ }),
 
@@ -183,41 +170,43 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Save)
+/* harmony export */   "default": () => (/* binding */ save)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
 
 
-function Save({
+
+function save({
   attributes
 }) {
   const {
-    backgroundColor,
-    textSize,
-    imageSize,
-    profilePicture,
     name,
-    jobTitle
+    jobTitle,
+    imageUrl,
+    textColor,
+    backgroundColor,
+    imageSize
   } = attributes;
-  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
-    style: {
-      backgroundColor: backgroundColor,
-      fontSize: textSize
-    }
-  });
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    ...blockProps
-  }, profilePicture && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-    src: profilePicture,
-    alt: "Profile",
+    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save(),
     style: {
-      width: imageSize + '%'
+      color: textColor,
+      backgroundColor: backgroundColor
+    }
+  }, imageUrl && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: imageUrl,
+    alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Profile Picture', 'my-staff-profile-block'),
+    style: {
+      width: imageSize,
+      height: 'auto'
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
-    tagName: "h4",
+    tagName: "h3",
     value: name
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: "p",
@@ -279,13 +268,13 @@ module.exports = window["wp"]["components"];
 
 /***/ }),
 
-/***/ "@wordpress/element":
-/*!*********************************!*\
-  !*** external ["wp","element"] ***!
-  \*********************************/
+/***/ "@wordpress/i18n":
+/*!******************************!*\
+  !*** external ["wp","i18n"] ***!
+  \******************************/
 /***/ ((module) => {
 
-module.exports = window["wp"]["element"];
+module.exports = window["wp"]["i18n"];
 
 /***/ }),
 
@@ -295,7 +284,7 @@ module.exports = window["wp"]["element"];
   \*********************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"gs/staff-profile","version":"0.1.0","title":"Staff Profile","category":"design","icon":"id","description":"Staff profile for staic block homework","example":{},"supports":{"html":false},"attributes":{"backgroundColor":{"type":"string","default":""},"textSize":{"type":"number","default":16},"imageSize":{"type":"number","default":100},"profilePicture":{"type":"string","default":""},"name":{"type":"string","default":""},"jobTitle":{"type":"string","default":""}},"textdomain":"staff-profile","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"gs/staff-profile","version":"0.1.0","title":"Staff Profile","category":"design","icon":"id","description":"Staff profile for staic block homework","example":{},"textdomain":"staff-profile","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"name":{"type":"string","source":"html","selector":"h3"},"jobTitle":{"type":"string","source":"html","selector":"p"},"imageUrl":{"type":"string","source":"attribute","selector":"img","attribute":"src"},"textColor":{"type":"string","default":"#000000"},"backgroundColor":{"type":"string","default":"#FFFFFF"},"imageSize":{"type":"number","default":150}}}');
 
 /***/ })
 

@@ -1,18 +1,15 @@
 import { useBlockProps, RichText } from '@wordpress/block-editor';
+import { __ } from '@wordpress/i18n';
 
-export default function Save({ attributes }) {
-	const { backgroundColor, textSize, imageSize, profilePicture, name, jobTitle } = attributes;
-
-	const blockProps = useBlockProps.save({
-		style: { backgroundColor: backgroundColor, fontSize: textSize }
-	});
+export default function save({ attributes }) {
+	const { name, jobTitle, imageUrl, textColor, backgroundColor, imageSize } = attributes;
 
 	return (
-		<div {...blockProps}>
-			{profilePicture && (
-				<img src={profilePicture} alt="Profile" style={{ width: imageSize + '%' }} />
+		<div {...useBlockProps.save()} style={{ color: textColor, backgroundColor: backgroundColor }}>
+			{imageUrl && (
+				<img src={imageUrl} alt={__('Profile Picture', 'my-staff-profile-block')} style={{ width: imageSize, height: 'auto' }} />
 			)}
-			<RichText.Content tagName="h4" value={name} />
+			<RichText.Content tagName="h3" value={name} />
 			<RichText.Content tagName="p" value={jobTitle} />
 		</div>
 	);

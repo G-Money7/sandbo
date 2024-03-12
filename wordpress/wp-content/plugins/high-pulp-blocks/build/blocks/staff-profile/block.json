@@ -8,38 +8,39 @@
   "icon": "id",
   "description": "Staff profile for staic block homework",
   "example": {},
-  "supports": {
-    "html": false
-  },
-  "attributes": {
-    "backgroundColor": {
-      "type": "string",
-      "default": ""
-    },
-    "textSize": {
-      "type": "number",
-      "default": 16
-    },
-    "imageSize": {
-      "type": "number",
-      "default": 100
-    },
-    "profilePicture": {
-      "type": "string",
-      "default": ""
-    },
-    "name": {
-      "type": "string",
-      "default": ""
-    },
-    "jobTitle": {
-      "type": "string",
-      "default": ""
-    }
-  },
   "textdomain": "staff-profile",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",
-  "viewScript": "file:./view.js"
+  "viewScript": "file:./view.js",
+  "attributes": {
+    "name": {
+      "type": "string",
+      "source": "html",
+      "selector": "h3"
+    },
+    "jobTitle": {
+      "type": "string",
+      "source": "html",
+      "selector": "p"
+    },
+    "imageUrl": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "img",
+      "attribute": "src"
+    },
+    "textColor": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": "#FFFFFF"
+    },
+    "imageSize": {
+      "type": "number",
+      "default": 150
+    }
+  }
 }
