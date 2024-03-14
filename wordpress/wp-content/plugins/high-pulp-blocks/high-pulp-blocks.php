@@ -36,6 +36,7 @@ function high_pulp_blocks_high_pulp_blocks_block_init() {
 	//add for every block in this plugin
 
 	wp_enqueue_script( 'wp-api' );
+
 }
 add_action( 'init', 'high_pulp_blocks_high_pulp_blocks_block_init' );
 //include our filters

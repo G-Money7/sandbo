@@ -9,7 +9,7 @@ export default class BlockApp extends React.Component {
 	};
 
 	addPokemon(newPokemon) {
-		// Assume wp.api.models.Pokemon exists and is configured correctly
+
 		const pokemon = new wp.api.models.Pokemon(newPokemon);
 		pokemon.save().done((data) => {
 			console.log("saved!", data);
@@ -20,7 +20,7 @@ export default class BlockApp extends React.Component {
 	}
 
 	getPokemon() {
-		// Assume wp.api.collections.Pokemon exists and is configured correctly
+
 		const pokemonCollection = new wp.api.collections.Pokemon();
 		pokemonCollection.fetch().done((data) => {
 			console.log("pokemon!!", data, pokemonCollection);

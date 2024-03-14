@@ -7,15 +7,18 @@ export default class PokemonCard extends React.Component {
 	};
 
 	render() {
-		const { name, pokemonType, imageUrl, votes } = this.props;
+		const { pokemon_name, image_url, votes, pokemonType, content } = this.props;
 		return (
 			<div className="pokemon-card">
 				<div className="pokemon-content">
 					<div className="pokemon-text">
-						<div className="pokemon-name">{name}</div>
+						<div className="pokemon-name">{pokemon_name}</div>
+						{/*<div className="pokemon-type">{pokemon_type}</div>*/}
+						<div className="pokemon-type">{content}</div>
+						{/*<div className="pokemon-type">dangerouslySetInnerHTML={{ __html: content}}</div>*/}
 						<div className="pokemon-type">{pokemonType}</div>
 						<div className="pokemon-image">
-							<img src={imageUrl} alt={`Image of ${name}`} />
+							<img src={image_url} alt={`Image of ${pokemon_name}`} />
 						</div>
 						<div className="vote">
 							<button onClick={() => this.handleVote('up')}>

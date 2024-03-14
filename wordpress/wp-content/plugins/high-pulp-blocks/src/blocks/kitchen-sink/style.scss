@@ -1,102 +1,175 @@
+/* General Styles */
+body, .new-pokemon-form, .pokemon-card {
+  font-family: 'Arial', sans-serif;
+}
+
+.new-pokemon-form h2, .pokemon-card .pokemon-name {
+  color: #3B4CCA; /* Blue */
+  text-align: center;
+}
 .new-pokemon-form {
-  background-color: #f0f0f0; /* Light grey */
+  background-color: #F8F8F8; /* Light gray */
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   max-width: 500px;
   margin: 20px auto;
 }
 
 .new-pokemon-form label {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  color: #2A1A1F; /* Dark */
 }
 
-.new-pokemon-form input,
-.new-pokemon-form select,
-.new-pokemon-form textarea {
+.new-pokemon-form input[type="text"],
+.new-pokemon-form input[type="checkbox"] + label {
   width: 100%;
-  padding: 8px;
-  margin-top: 4px;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #787878; /* Gray */
   border-radius: 4px;
-  border: 1px solid #787878; /* Grey */
   box-sizing: border-box;
 }
 
-.new-pokemon-form button {
-  background-color: #ff0000; /* Red */
-  color: #ffffff; /* White */
+.new-pokemon-form input[type="submit"] {
+  background-color: #FF0000; /* Red */
+  color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 4px;
   cursor: pointer;
-  font-weight: bold;
+  display: block;
+  width: 100%;
 }
 
-.new-pokemon-form button:hover {
-  background-color: #e60000; /* Darker Red */
+.new-pokemon-form input[type="submit"]:hover {
+  background-color: #E60000; /* Darker Red */
 }
+
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
 .pokemon-card {
-  background-color: #ffffff; /* White */
-  border: 1px solid #787878; /* Grey */
+  background-color: #FFFFFF; /* White */
+  border: 1px solid #787878; /* Gray */
   border-radius: 8px;
   overflow: hidden;
-  margin-bottom: 20px;
   display: flex;
-  flex-direction: row;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
 }
 
 .pokemon-content {
   padding: 20px;
 }
 
-.pokemon-name {
-  color: #2a1a1f; /* Dark */
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 5px;
+.pokemon-image img {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #787878; /* Gray */
 }
 
-.pokemon-type {
-  color: #3b4cca; /* Blue */
-  font-size: 14px;
+.vote {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.vote button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  margin: 0 10px;
+}
+.pokemon-card {
+  width: 300px;
+  border: 2px solid #00f;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  background: linear-gradient(145deg, #6e00ff, #ff007a);
+  margin: 20px;
+  display: inline-block;
+  vertical-align: top;
+  color: #fff;
+}
+
+.pokemon-content {
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+}
+
+.pokemon-text {
+  text-align: center;
+}
+
+.pokemon-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff0;
+  text-shadow: 2px 2px 4px #000;
   margin-bottom: 10px;
 }
 
+.pokemon-type {
+  font-size: 18px;
+  color: #0ff;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 2px #000;
+}
+
 .pokemon-image img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
+  width: 100%;
+  height: auto;
+  padding-bottom: 20px;
 }
 
-.pokemon-card div {
+.vote {
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
+  gap: 10px;
 }
 
-@media (max-width: 600px) {
-  .pokemon-card {
-	flex-direction: column;
-  }
-
-  .pokemon-image img {
-	width: 100%;
-	height: auto;
-  }
-}
-.pokemon-list {
-  padding: 0 20px;
+.vote button {
+  background-color: #f00;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  padding: 5px 10px;
+  font-size: 24px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  transition: transform 0.1s ease-in-out;
 }
 
-.form-description p {
-  color: #2a1a1f; /* Dark */
-  font-size: 14px;
-  line-height: 1.4;
+.vote h3 {
+  font-size: 20px;
+  color: #ff0;
+  text-shadow: 1px 1px 2px #000;
 }
 
-h3 {
-  color: #3b4cca; /* Blue */
-  text-align: center;
+/* Enhancing hover effect for a lively interaction */
+.vote button:hover {
+  transform: scale(1.1);
+  background-color: #ff8c00;
+}
+
+/* Adding focus effect for accessibility */
+.vote button:focus {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
 }

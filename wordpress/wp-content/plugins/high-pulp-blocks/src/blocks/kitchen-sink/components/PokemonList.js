@@ -26,13 +26,14 @@ export default class PokemonList extends React.Component {
 			<div className="pokemon-list">
 				{this.props.pokemon.map(pokemon => (
 					<PokemonCard
-						key={pokemon.id} // Assuming pokemon.id is the unique identifier
-						name={pokemon.attributes.name}
+						key={pokemon.id}
+						pokemon_name={pokemon.attributes.acf.pokemon_name}
+						content={pokemon.attributes.content.rendered}
 						pokemonType={pokemon.attributes.acf.pokemon_type}
-						imageUrl={pokemon.attributes.acf.image_url}
-						votes={pokemon.attributes.acf.votes} // Assume votes is stored and accessible
+						image_url={pokemon.attributes.acf.image_url}
+						votes={pokemon.attributes.acf.votes}
 						handleVote={this.handleVote}
-						id={pokemon.id} // Pass the ID for voting functionality
+						// id={pokemon.id} // Pass the ID for voting functionality
 					/>
 				))}
 			</div>

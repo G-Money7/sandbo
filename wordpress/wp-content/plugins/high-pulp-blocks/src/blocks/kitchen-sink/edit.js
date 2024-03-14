@@ -30,8 +30,7 @@ import metadata from './block.json';
  * @return {Element} Element to render.
  */
 export default function Edit({attributes, setAttributes, clientId}) {
-	// here's how we "could" get a unique ID
-	// but Edit is the only method that gets the clientId
+
 	console.log(clientId);
 	return (
 		<div {...useBlockProps()}>

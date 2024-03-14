@@ -1,26 +1,30 @@
 import React from "react";
 
+
 export default class AddPokemonForm extends React.Component {
 	state = {
-		name: '',
-		pokemonType: '',
-		imageUrl: '',
+		pokemon_name: '',
+		pokemonType: ['normal'],
+		image_url: '',
+		content: '',
 	};
+
 
 	addPokemon = (e) => {
 		e.preventDefault();
 
 		const newPokemon = {
-			title: this.state.name,
-			content: 'A new Pokémon suggestion.',
+			content: this.state.content,
+
 			acf: {
 				pokemon_type: this.state.pokemonType,
-				image_url: this.state.imageUrl,
+				image_url: this.state.image_url,
+				pokemon_name: this.state.pokemon_name,
 			},
 			status: 'publish',
 		}
 
-		// Assuming addPokemon prop is a method passed down to handle the submission
+
 		this.props.addPokemon?.(newPokemon);
 	}
 
@@ -37,26 +41,35 @@ export default class AddPokemonForm extends React.Component {
 					Pokémon Name:
 					<input
 						type="text"
-						value={this.state.name}
-						onChange={e => this.setState({ name: e.target.value })}
+						value={this.state.pokemon_name}
+						onChange={e => this.setState({ pokemon_name: e.target.value })}
 					/>
 				</label>
 
+				<div class="skill">
+				<label>Pokemon Type:</label>
+				<select value={this.state.pokemonType} onChange={e=>this.setState({PokemonType:e.target.value})}>
+
+					<option value="fire">fire</option>
+					<option value="water">water</option>
+					<option value="grass">grass</option>
+				</select>
+			</div>
 				<label>
-					Pokémon Type:
-					<input
-						type="text"
-						value={this.state.pokemonType}
-						onChange={e => this.setState({ pokemonType: e.target.value })}
-					/>
+					Description of Pokemon
+					<textarea
+					value={this.state.content}
+					onInput={e => this.setState({ content: e.target.value })}
+
+					></textarea>
 				</label>
 
 				<label>
 					Image URL:
 					<input
 						type="text"
-						value={this.state.imageUrl}
-						onChange={e => this.setState({ imageUrl: e.target.value })}
+						value={this.state.image_url}
+						onChange={e => this.setState({ image_url: e.target.value })}
 					/>
 				</label>
 

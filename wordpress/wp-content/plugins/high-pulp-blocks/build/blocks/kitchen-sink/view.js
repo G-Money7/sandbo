@@ -26,7 +26,6 @@ class BlockApp extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) 
     loggedIn: null
   };
   addPokemon(newPokemon) {
-    // Assume wp.api.models.Pokemon exists and is configured correctly
     const pokemon = new wp.api.models.Pokemon(newPokemon);
     pokemon.save().done(data => {
       console.log("saved!", data);
@@ -36,7 +35,6 @@ class BlockApp extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) 
     });
   }
   getPokemon() {
-    // Assume wp.api.collections.Pokemon exists and is configured correctly
     const pokemonCollection = new wp.api.collections.Pokemon();
     pokemonCollection.fetch().done(data => {
       console.log("pokemon!!", data, pokemonCollection);
@@ -85,10 +83,11 @@ class PokemonCard extends (react__WEBPACK_IMPORTED_MODULE_0___default().Componen
   };
   render() {
     const {
-      name,
+      pokemon_name,
+      image_url,
+      votes,
       pokemonType,
-      imageUrl,
-      votes
+      content
     } = this.props;
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "pokemon-card"
@@ -98,13 +97,15 @@ class PokemonCard extends (react__WEBPACK_IMPORTED_MODULE_0___default().Componen
       className: "pokemon-text"
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "pokemon-name"
-    }, name), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    }, pokemon_name), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "pokemon-type"
+    }, content), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "pokemon-type"
     }, pokemonType), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "pokemon-image"
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-      src: imageUrl,
-      alt: `Image of ${name}`
+      src: image_url,
+      alt: `Image of ${pokemon_name}`
     })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "vote"
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
@@ -139,23 +140,22 @@ __webpack_require__.r(__webpack_exports__);
 
 class AddPokemonForm extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
   state = {
-    name: '',
-    pokemonType: '',
-    imageUrl: ''
+    pokemon_name: '',
+    pokemonType: ['normal'],
+    image_url: '',
+    content: ''
   };
   addPokemon = e => {
     e.preventDefault();
     const newPokemon = {
-      title: this.state.name,
-      content: 'A new Pokémon suggestion.',
+      content: this.state.content,
       acf: {
         pokemon_type: this.state.pokemonType,
-        image_url: this.state.imageUrl
+        image_url: this.state.image_url,
+        pokemon_name: this.state.pokemon_name
       },
       status: 'publish'
     };
-
-    // Assuming addPokemon prop is a method passed down to handle the submission
     this.props.addPokemon?.(newPokemon);
   };
   render() {
@@ -164,21 +164,33 @@ class AddPokemonForm extends (react__WEBPACK_IMPORTED_MODULE_0___default().Compo
       onSubmit: this.addPokemon
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Suggest a New Pok\xE9mon"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "We appreciate our community's suggestions and always aim to expand our Pok\xE9dex with YOU in mind! Share your ideas for new Pok\xE9mon below!")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Pok\xE9mon Name:", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
       type: "text",
-      value: this.state.name,
+      value: this.state.pokemon_name,
       onChange: e => this.setState({
-        name: e.target.value
+        pokemon_name: e.target.value
       })
-    })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Pok\xE9mon Type:", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-      type: "text",
+    })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      class: "skill"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Pokemon Type:"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("select", {
       value: this.state.pokemonType,
       onChange: e => this.setState({
-        pokemonType: e.target.value
+        PokemonType: e.target.value
+      })
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("option", {
+      value: "fire"
+    }, "fire"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("option", {
+      value: "water"
+    }, "water"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("option", {
+      value: "grass"
+    }, "grass"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Description of Pokemon", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("textarea", {
+      value: this.state.content,
+      onInput: e => this.setState({
+        content: e.target.value
       })
     })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Image URL:", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
       type: "text",
-      value: this.state.imageUrl,
+      value: this.state.image_url,
       onChange: e => this.setState({
-        imageUrl: e.target.value
+        image_url: e.target.value
       })
     })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
       type: "submit"
@@ -226,15 +238,14 @@ class PokemonList extends (react__WEBPACK_IMPORTED_MODULE_0___default().Componen
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "pokemon-list"
     }, this.props.pokemon.map(pokemon => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_PokemonCard__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      key: pokemon.id // Assuming pokemon.id is the unique identifier
-      ,
-      name: pokemon.attributes.name,
+      key: pokemon.id,
+      pokemon_name: pokemon.attributes.acf.pokemon_name,
+      content: pokemon.attributes.content.rendered,
       pokemonType: pokemon.attributes.acf.pokemon_type,
-      imageUrl: pokemon.attributes.acf.image_url,
-      votes: pokemon.attributes.acf.votes // Assume votes is stored and accessible
-      ,
-      handleVote: this.handleVote,
-      id: pokemon.id // Pass the ID for voting functionality
+      image_url: pokemon.attributes.acf.image_url,
+      votes: pokemon.attributes.acf.votes,
+      handleVote: this.handleVote
+      // id={pokemon.id} // Pass the ID for voting functionality
     })));
   }
 }
@@ -375,7 +386,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const blocks = document.querySelectorAll('.wp-block-gs-kitchen-sink');
+const blocks = document.querySelectorAll('.wp-block-gs-pokemon-suggestion');
 blocks.forEach(block => {
   (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(block).render((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_BlockApp__WEBPACK_IMPORTED_MODULE_2__["default"], null));
 });

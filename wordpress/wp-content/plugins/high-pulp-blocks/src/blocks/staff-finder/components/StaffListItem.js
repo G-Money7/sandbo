@@ -16,7 +16,7 @@ export default class StaffListItem extends React.Component {
 
 						<p className="position">{person.acf.staff_position}</p>
 
-							<div className="bio" dangerouslySetInnerHTML={{ __html: person.content.rendered }} />
+						<div className="bio" dangerouslySetInnerHTML={{ __html: person.content.rendered }} />
 
 					</div>
 				</div>

@@ -59,8 +59,6 @@ function Edit({
   setAttributes,
   clientId
 }) {
-  // here's how we "could" get a unique ID
-  // but Edit is the only method that gets the clientId
   console.log(clientId);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()

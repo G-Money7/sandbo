@@ -13,11 +13,11 @@ export default class BlockApp extends React.Component {
 		//ajax call
 		fetch('/wp-json/wp/v2/staff?_embed')
 			.then(response => response.json())
-		.then(json => {
-			console.log(json);
-			this.setState({staff:json, filteredStaff: json});
+			.then(json => {
+				console.log(json);
+				this.setState({staff:json, filteredStaff: json});
 
-		})
+			})
 			.catch(error => {
 				console.error('WP JSON ERROR', error);
 			})
@@ -25,14 +25,14 @@ export default class BlockApp extends React.Component {
 	//another common place to ake ajax calls
 	// componentDidMount() {
 	// }
-doFilter(filterKeyword){
+	doFilter(filterKeyword){
 		const filteredStaff = this.state.staff.filter(person => {
 			return person.title.rendered.toLowerCase().includes(filterKeyword.toLowerCase());
 		})
-	this.setState ({
-		filterKeyword, filteredStaff
+		this.setState ({
+			filterKeyword, filteredStaff
 		})
-}
+	}
 	render() {
 		return (
 			<div>
@@ -42,7 +42,7 @@ doFilter(filterKeyword){
 						type="text"
 						value={this.state.filterKeyword}
 						onInput={e => this.doFilter(e.target.value)}
-				/>
+					/>
 				</label>
 				{/*advantage of using react with wordpress is that wordpress already has features built in for react*/}
 				<TextControl label="label"
