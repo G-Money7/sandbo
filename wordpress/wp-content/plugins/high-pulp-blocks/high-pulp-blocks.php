@@ -32,6 +32,7 @@ function high_pulp_blocks_high_pulp_blocks_block_init() {
 	register_block_type( __DIR__ . '/build/blocks/submit-review' );
 	register_block_type(__DIR__ . '/build/blocks/staff-profile');
 	register_block_type(__DIR__ . '/build/blocks/portfolio-piece');
+	register_block_type(__DIR__ . '/build/blocks/kitchen-sink');
 	//add for every block in this plugin
 
 	wp_enqueue_script( 'wp-api' );

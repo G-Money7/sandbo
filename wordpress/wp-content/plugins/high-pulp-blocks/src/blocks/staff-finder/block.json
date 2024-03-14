@@ -16,5 +16,5 @@
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
 	"viewScript": "file:./view.js",
-  "keywords": ["jl", "pulpy", "staff"]
+  "keywords": ["gs", "pulpy", "staff"]
 }
