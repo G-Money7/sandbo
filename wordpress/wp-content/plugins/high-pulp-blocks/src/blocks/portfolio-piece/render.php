@@ -15,4 +15,15 @@ function render_piece_card_block($block_attributes, $content) {
 		$description = get_field('piece_description', $piece->ID);
 
 		$output .= sprintf(
-			'<div class="piece-card"><img src="%s" alt="%s"><h3>%s</h3><p>%s</p><a href="%s">Learn More</a></div
+			'<div class="piece-card"><img src="%s" alt="%s"><h3>%s</h3><p>%s</p><a href="%s">Learn More</a></div>',
+			esc_url($picture),
+			esc_attr($title),
+			esc_html($title),
+			esc_html($description),
+			esc_url($link)
+		);
+	}
+	$output .= '</div>';
+
+	return $output;
+}

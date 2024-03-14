@@ -141,7 +141,7 @@ __webpack_require__.r(__webpack_exports__);
 class AddPokemonForm extends (react__WEBPACK_IMPORTED_MODULE_0___default().Component) {
   state = {
     pokemon_name: '',
-    pokemonType: ['normal'],
+    pokemonType: [],
     image_url: '',
     content: ''
   };

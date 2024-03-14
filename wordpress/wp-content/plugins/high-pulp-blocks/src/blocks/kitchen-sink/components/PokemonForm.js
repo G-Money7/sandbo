@@ -4,7 +4,7 @@ import React from "react";
 export default class AddPokemonForm extends React.Component {
 	state = {
 		pokemon_name: '',
-		pokemonType: ['normal'],
+		pokemonType: [],
 		image_url: '',
 		content: '',
 	};
