@@ -1,23 +1,2 @@
-/*!***********************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/blocks/testimonial/editor.scss ***!
-  \***********************************************************************************************************************************************************************************************************************************************************/
-wp-block-gs-testimonial {
-  border: 2px dashed #f00;
-}
-wp-block-gs-testimonial textarea, wp-block-gs-testimonial input[type=text] {
-  background-color: #FCFCFC;
-}
-/*!*******************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/components/StarRating.scss ***!
-  \*******************************************************************************************************************************************************************************************************************************************************/
-.stars .star:hover {
-  cursor: pointer;
-}
-.stars .star.on {
-  color: #FFD700;
-}
-.stars .star.off {
-  color: grey;
-}
-
-/*# sourceMappingURL=index.css.map*/
+wp-block-gs-testimonial{border:2px dashed red}wp-block-gs-testimonial input[type=text],wp-block-gs-testimonial textarea{background-color:#fcfcfc}
+.stars .star:hover{cursor:pointer}.stars .star.on{color:gold}.stars .star.off{color:gray}
