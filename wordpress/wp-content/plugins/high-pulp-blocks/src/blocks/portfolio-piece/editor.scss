@@ -1,9 +1,55 @@
-/**
- * The following styles get applied inside the editor only.
- *
- * Replace them with your own styles or remove the file completely.
- */
+// style.scss
+.portfolio-piece-block {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
 
-.wp-block-gs-portfolio-piece {
-	border: 1px dotted #f00;
+.portfolio-piece {
+  cursor: pointer;
+  transition: transform 0.2s;
+
+  &:hover {
+	transform: scale(1.05);
+  }
+
+  img {
+	max-width: 100%;
+	height: auto;
+  }
+}
+
+.portfolio-modal {
+  display: none; // Hidden by default
+  position: fixed; // Stay in place
+  z-index: 1000; // Sit on top
+  left: 0;
+  top: 0;
+  width: 100%; // Full width
+  height: 100%; // Full height
+  overflow: auto; // Enable scroll if needed
+  background-color: rgb(0, 0, 0); // Fallback color
+  background-color: rgba(0, 0, 0, 0.4); // Black w/ opacity
+
+  .portfolio-modal-content {
+	background-color: #fefefe;
+	margin: 15% auto; // 15% from the top and centered
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%; // Could be more or less, depending on screen size
+
+	.portfolio-modal-close {
+	  color: #aaa;
+	  float: right;
+	  font-size: 28px;
+	  font-weight: bold;
+	}
+
+	.portfolio-modal-close:hover,
+	.portfolio-modal-close:focus {
+	  color: black;
+	  text-decoration: none;
+	  cursor: pointer;
+	}
+  }
 }

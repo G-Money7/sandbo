@@ -4,19 +4,13 @@
 	"name": "gs/portfolio-piece",
 	"version": "0.1.0",
 	"title": "Portfolio Piece",
-	"category": "widgets",
+	"category": "media",
 	"icon": "id",
-	"description": "Dynamic block for assignment that lets me upload stuff for my portfolio piece",
+	"description": "Dynamic block homework for portfolio pieces ",
 	"example": {},
 	"supports": {
 		"html": false
 	},
-  "attributes": {
-	"portfolioItemId": {
-	  "type": "number",
-	  "default": 0
-	}
-  },
 
   "textdomain": "portfolio-piece",
 	"editorScript": "file:./index.js",

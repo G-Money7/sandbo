@@ -1,25 +1,45 @@
-/**
- * Use this file for JavaScript code that you want to run in the front-end 
- * on posts/pages that contain this block.
- *
- * When this file is defined as the value of the `viewScript` property
- * in `block.json` it will be enqueued on the front end of the site.
- *
- * Example:
- *
- * ```js
- * {
- *   "viewScript": "file:./view.js"
- * }
- * ```
- *
- * If you're not making any changes to this file because your project doesn't need any 
- * JavaScript running in the front-end, then you should delete this file and remove 
- * the `viewScript` property from `block.json`. 
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/#view-script
- */
- 
-/* eslint-disable no-console */
-console.log("Hello World! (from gs-portfolio-piece block)");
-/* eslint-enable no-console */
+document.addEventListener('DOMContentLoaded', () => {
+	// Function to open a modal with content
+	function openModal(content) {
+		const modal = document.createElement('div');
+		modal.innerHTML = `
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                ${content}
+            </div>
+        `;
+		modal.className = 'modal';
+
+		// Style the modal (Basic example, adjust according to your needs)
+		Object.assign(modal.style, {
+			position: 'fixed',
+			top: '50%',
+			left: '50%',
+			transform: 'translate(-50%, -50%)',
+			backgroundColor: '#fff',
+			padding: '20px',
+			zIndex: 1000,
+			maxWidth: '80%',
+			maxHeight: '80%',
+			overflowY: 'auto',
+		});
+
+		// Close modal functionality
+		modal.querySelector('.close').addEventListener('click', () => {
+			modal.remove();
+		});
+
+		document.body.appendChild(modal);
+	}
+
+	// Attach click event listeners to each portfolio piece
+	const portfolioPieces = document.querySelectorAll('.portfolio-piece');
+	portfolioPieces.forEach(piece => {
+		piece.addEventListener('click', () => {
+			// For this example, let's assume the description is stored directly in a data attribute
+			// Adjust this to fit how you're actually storing/displaying the description
+			const description = piece.dataset.description;
+			openModal(description);
+		});
+	});
+});
