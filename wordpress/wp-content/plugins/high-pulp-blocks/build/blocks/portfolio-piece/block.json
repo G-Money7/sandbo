@@ -1,20 +1,50 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "gs/portfolio-piece",
+  "name": "gs/portfolio-list",
   "version": "0.1.0",
-  "title": "Portfolio Piece",
-  "category": "media",
+  "title": "Portfolio List",
+  "category": "design",
   "icon": "id",
-  "description": "Dynamic block homework for portfolio pieces ",
+  "description": "Display portfolio pieces with an image and a link.",
   "example": {},
   "supports": {
     "html": false
   },
-  "textdomain": "portfolio-piece",
+  "textdomain": "portfolio-list",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",
   "render": "file:./render.php",
-  "viewScript": "file:./view.js"
+  "viewScript": "file:./view.js",
+  "keywords": [
+    "portfolio",
+    "pieces",
+    "gallery"
+  ],
+  "attributes": {
+    "cardColor": {
+      "type": "string"
+    },
+    "headingColor": {
+      "type": "string"
+    },
+    "textColor": {
+      "type": "string"
+    },
+    "piece_picture": {
+      "type": "string"
+    },
+    "piece_link": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        }
+      }
+    }
+  }
 }

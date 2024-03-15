@@ -1,1 +1,31 @@
-.wp-block-gs-staff-profile{background-color:#21759b;border:1px solid #ccc;box-shadow:0 2px 5px rgba(0,0,0,.1);color:#fff;margin-bottom:20px;padding:2px;padding:20px}.wp-block-gs-staff-profile h3,.wp-block-gs-staff-profile p{margin:10px 0}.wp-block-gs-staff-profile img{border-radius:50%;display:block;margin:0 auto 20px}
+/*!************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/blocks/staff-profile/style.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-gs-staff-profile {
+  background-color: #21759b;
+  color: #fff;
+  padding: 2px;
+}
+
+.wp-block-gs-staff-profile {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.wp-block-gs-staff-profile h3, .wp-block-gs-staff-profile p {
+  margin: 10px 0;
+}
+.wp-block-gs-staff-profile img {
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+/*# sourceMappingURL=style-index.css.map*/

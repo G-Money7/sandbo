@@ -1,29 +1,39 @@
 <?php
-function render_piece_card_block($block_attributes, $content) {
-	// Assuming 'piece' is a post object or similar. Adjust query as needed.
-	$pieces = get_posts(array('post_type' => 'piece'));
+/**
+ * Render callback for the portfolio list block.
+ * Displays portfolio pieces with an image and a link.
+ */
 
-	if (empty($pieces)) {
-		return 'No pieces found.';
-	}
+$query = new WP_Query([
+		'post_type' => 'pieces', // Corrected post type key
+		'posts_per_page' => -1, // Fetch all posts
+		'orderby' => 'title',
+		'order' => 'ASC',
+]);
 
-	$output = '<div class="piece-cards">';
-	foreach ($pieces as $piece) {
-		$picture = get_field('piece_picture', $piece->ID);
-		$title = get_field('piece_title', $piece->ID);
-		$link = get_field('piece_link', $piece->ID);
-		$description = get_field('piece_description', $piece->ID);
+if ($query->have_posts()): ?>
+	<div <?php echo get_block_wrapper_attributes(); ?>>
+		<?php while ($query->have_posts()): $query->the_post();
+			$piece_picture = get_field('piece_picture'); // ACF field for the image
+			$piece_link = get_field('piece_link'); // ACF field for the URL
+			?>
 
-		$output .= sprintf(
-			'<div class="piece-card"><img src="%s" alt="%s"><h3>%s</h3><p>%s</p><a href="%s">Learn More</a></div>',
-			esc_url($picture),
-			esc_attr($title),
-			esc_html($title),
-			esc_html($description),
-			esc_url($link)
-		);
-	}
-	$output .= '</div>';
+			<div class="portfolio-piece">
+				<a href="<?php echo esc_url($piece_link['url']); ?>" target="<?php echo esc_attr($piece_link['target'] ?? '_self'); ?>">
+					<div class="portfolio-piece-image">
+						<?php if ($piece_picture): ?>
+							<img src="<?php echo esc_url($piece_picture['url']); ?>" alt="<?php echo esc_attr($piece_picture['alt'] ?? get_the_title()); ?>">
+						<?php endif; ?>
+					</div>
+					<div class="portfolio-piece-info" style="background-color: <?php echo esc_attr($attributes['cardColor']); ?>">
+						<h3 class="portfolio-piece-title" style="color: <?php echo esc_attr($attributes['headingColor']); ?>"><?php the_title(); ?></h3>
+						<div class="portfolio-piece-description" style="color: <?php echo esc_attr($attributes['textColor']); ?>">
+							<?php the_excerpt(); ?>
+						</div>
+					</div>
+				</a>
+			</div>
 
-	return $output;
-}
+		<?php endwhile; ?>
+	</div>
+<?php endif; wp_reset_postdata(); ?>
