@@ -24,7 +24,7 @@ export default function Edit({ attributes, setAttributes }) {
 						<h3 className="name" style={{ color: attributes.headingColor }}>Red Forman</h3>
 						<div className="position" style={{ color: attributes.textColor }}>Manager</div>
 						<div className="bio" style={{ color: attributes.textColor }}>
-							<p>If I Was A Bird, I’d Fly Into A Ceiling Fan.</p>
+							<p>If I Was A gavin, I’d code and sleep</p>
 						</div>
 					</div>
 				</div>

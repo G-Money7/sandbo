@@ -119,7 +119,7 @@ function Edit({
     style: {
       color: attributes.textColor
     }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "If I Was A Bird, I\u2019d Fly Into A Ceiling Fan."))))));
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "If I Was A gavin, I\u2019d code and sleep"))))));
 }
 
 /***/ }),
